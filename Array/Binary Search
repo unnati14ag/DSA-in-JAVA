@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Binary_Search {
+    int b_Search(int arr[], int i, int j, int x) {
+        if (j >= i) {
+            int mid = (i + j) / 2;
+            if (arr[mid] == x) {
+                return mid;
+            } else if (x < arr[mid]) {
+                return b_Search(arr, i, mid - 1, x);
+            } else {
+                return b_Search(arr, mid + 1, j, x);
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String args[]) {
+        Binary_Search obj = new Binary_Search();
+        int n;
+        Scanner Sc = new Scanner(System.in);
+        System.out.println("Enter the size of array: ");
+        n = Sc.nextInt();
+        int m[] = new int[n];
+        System.out.println("Enter the values of array: ");
+        for (int i = 0; i < n; i++) {
+            m[i] = Sc.nextInt();
+        }
+        System.out.println("Enter the value to be searched:");
+        int x = Sc.nextInt();
+        int result = obj.b_Search(m, 0, n, x);
+        if (result == -1) {
+            System.out.println("The element is not found.");
+        } else {
+            System.out.println("Element is found at index " + result);
+        }
+
+    }
+
+}
